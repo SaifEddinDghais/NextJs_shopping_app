@@ -2,32 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer components {
+  .icons {
+    @apply bg-gray-200 p-[6px] hover:bg-accent hover:text-white rounded-md text-[14px] cursor-pointer;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .navbar_links {
+    position: relative;
+    cursor: pointer;
+  }
+  .navbar_links:hover {
+    color: #ff8f9c;
+    transition: all 0.4s;
+  }
+
+  .navbar_links::after {
+    position: absolute;
+    content: "";
+    background-color: #ff8f9c;
+    height: 3px;
+    width: 0%;
+    bottom: -5px;
+    left: 0;
+    transition: all 0.4s;
+  }
+
+  .navbar_links:hover::after {
+    width: 100%;
+  }
+
+  .testimonial_bg__img {
+    background-image: url("/cta-banner.jpg");
+    background-size: cover;
+    background-position: center;
   }
 }
